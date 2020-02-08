@@ -1,0 +1,117 @@
+html,body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.wrapper{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 0.7fr 1fr 1fr;
+    grid-template-columns:1fr 1fr;
+    grid-template-areas: "header         header "
+                         "left-number   right-number"
+                         "controls      controls             ";
+    background-image: linear-gradient(to top, rgb(168, 192, 255), rgb(63, 43, 150));
+}
+.name{
+    font-size: 4em;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+    grid-area: header;
+    color: #f3558e;
+}
+.number{
+    font-size: 4em;
+    font-size: 4em;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+    color: #f3558e;
+    align-items: center;
+    justify-content:center;
+    display:flex;
+    flex-direction: column;
+}
+.left-number{
+grid-area: left-number;
+}
+.right-number{
+    grid-area: right-number;
+    align-content: center;
+    justify-content:center;
+}
+.work,.break{
+    height: 50%;
+    width:70%;
+    background-color:none;
+    color:rgb(63, 43, 150);
+    font-size: 1em;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+button{
+    display: box;
+    padding:0.1em;
+    font-size: 0.8em;
+    width:70% ;
+    font-weight: 400;
+    color:rgb(63, 43, 150);
+}
+p{
+    text-align: center;
+    font-family: sans-serif;
+}
+.number > :first-child{
+    font-size: 0.6em;
+}
+.controls{
+    grid-area: controls;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: flex-start;
+    justify-content: center;
+    align-content: flex-start;
+}
+.controls > *{
+    font-size: 2em;
+    width:23%;
+    margin:0em 0.1em;
+    color:rgb(63, 43, 150);
+    height: 40%;
+}
+button{
+    background-color: inherit;
+    border: none;
+}
+button img{
+    width: 100%;
+    max-width:100px;
+    max-height:100px;
+}
+.left-number button, .right-number button{
+    margin:-1% 0%;
+}
+@media only screen and (min-width : 415px) {
+   
+   .work,.break{
+       height:40%;
+       width:60%;
+   }
+
+}
+@media only screen and (min-width : 1280px) {
+    .controls > *{
+        height: 48%;
+        width:10%
+
+    }
+    .left-number button, .right-number button{
+        width:25%;
+    }
+}
