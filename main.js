@@ -8,6 +8,9 @@ let stopPoint;
 const workN=document.querySelector(".work-number");
 const breakN=document.querySelector(".break-number")
 const decBtn=document.querySelectorAll(".dec");
+window.onload=()=>{
+    pauseBtn.classList.add("invis");
+}
     incrBtn.forEach(button=>{
         button.addEventListener("click",()=>{
             let number = button.nextElementSibling.firstElementChild;
@@ -26,6 +29,7 @@ const decBtn=document.querySelectorAll(".dec");
     })
     const startBtn= document.querySelector(".start");
     startBtn.addEventListener("click",function(){
+        pauseBtn.classList.remove("invis");
         if(pauseBtn.hasAttribute("data-active")){
             startBtn.setAttribute("disabled","true");
             let start=Date.now();
@@ -48,6 +52,7 @@ const decBtn=document.querySelectorAll(".dec");
         startWork(then);}
     })
     function startBreak(then){
+        document.title="BREAK!";
         let minutes= breakN.innerHTML;
         let start=Date.now();
         then=start+minutes*60*1000;
@@ -60,12 +65,14 @@ const decBtn=document.querySelectorAll(".dec");
                 clearInterval(countdown);
                 breakN.innerHTML=breakNumber;
                 breakN.classList.remove("active");
+                document.title="WORK!";
                 startWork(then);
                 return
             }
         },1000)
     }
     function startWork(then){
+        document.title="WORK!";
         let minutes= workN.innerHTML;
         let start=Date.now();
         then=start+minutes*60*1000;
@@ -79,6 +86,7 @@ const decBtn=document.querySelectorAll(".dec");
                 workN.innerHTML=workNumber;
                 workN.classList.remove("active");
                 console.log(workN.classList);
+                document.title="BREAK!";
                 startBreak(then);
                 return
             }
@@ -93,6 +101,8 @@ const decBtn=document.querySelectorAll(".dec");
         breakN.classList.remove("active");
         pauseBtn.removeAttribute("disabled");
         pauseBtn.removeAttribute("data-active");
+        document.title="Pomodoro Timer";
+        pauseBtn.classList.add("invis");
     })
     const pauseBtn=document.querySelector(".pause");
     pauseBtn.addEventListener("click",()=>{
@@ -110,8 +120,10 @@ const decBtn=document.querySelectorAll(".dec");
         workN.classList.remove("active");
         breakN.classList.remove("active");
         clearInterval(countdown);
+        document.title="PAUSE";
     })
     function startWorkMod(then){
+        document.title="WORK!";
         startBtn.setAttribute("disabled","true");
         workN.classList.add("active");
             let minutes= stopPoint;
@@ -127,10 +139,12 @@ const decBtn=document.querySelectorAll(".dec");
                     workN.classList.remove("active");
                     console.log(workN.classList);
                     stopPoint=breakNumber;
+                    document.title="BREAK!";
                     startBreakMod();
                     return }
                 },1000)}
     function startBreakMod(){
+        document.title="BREAK!";
         let minutes= stopPoint;
         let start=Date.now();
          then=start+minutes*60*1000;
@@ -144,6 +158,7 @@ const decBtn=document.querySelectorAll(".dec");
                 breakN.innerHTML=breakNumber;
                 breakN.classList.remove("active");
                 stopPoint=workNumber;
+                document.title="WORK!";
                 startWorkMod(then);
                 return
             }

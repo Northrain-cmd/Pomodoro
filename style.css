@@ -51,6 +51,9 @@ button{
 .left-number{
 grid-area: left-number;
 }
+.invis{
+    visibility: hidden;
+}
 .right-number{
     grid-area: right-number;
     align-content: center;
