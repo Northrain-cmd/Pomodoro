@@ -32,7 +32,13 @@ const decBtn=document.querySelectorAll(".dec");
             let then=start+stopPoint*60*1000;
             pauseBtn.removeAttribute("data-active");
             pauseBtn.removeAttribute("disabled");
-            startWorkMod(then);}
+            if(pauseBtn.hasAttribute("data-Lactive")){
+            startWorkMod(then);
+            pauseBtn.removeAttribute("data-Lactive")}
+            else{
+                startBreakMod();
+                pauseBtn.removeAttribute("data-Ractive")
+            }}
         else{
         startBtn.setAttribute("disabled","true");
         breakNumber=document.querySelector(".break-number").innerHTML;
@@ -94,6 +100,12 @@ const decBtn=document.querySelectorAll(".dec");
         pauseBtn.setAttribute("disabled","true");
         stopPoint=timer.toFixed(3);
         console.log(stopPoint);
+        if(workN.classList.contains("active")){
+            pauseBtn.setAttribute("data-Lactive","true");
+        }
+        else{
+            pauseBtn.setAttribute("data-Ractive","true");
+        }
         pauseBtn.setAttribute("data-active","true");
         workN.classList.remove("active");
         breakN.classList.remove("active");
