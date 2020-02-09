@@ -33,6 +33,10 @@ button{
     grid-area: header;
     color: #f3558e;
 }
+.active{
+    color: #f3558e;
+    
+}
 .number{
     font-size: 4em;
     font-size: 4em;
@@ -99,6 +103,9 @@ p{
 button{
     background-color: inherit;
     border: none;
+}
+button:disabled img{
+border-bottom:0.3em solid #f3558e;
 }
 button img{
     width: 100%;
